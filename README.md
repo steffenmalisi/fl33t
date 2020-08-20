@@ -10,3 +10,8 @@ Flix has several stations all over the world. They call them satellites. Multipl
 A planet is also the boundary for the fleet. Each planet has its own fleet, but vehicles can be interchanged between the satellites of this planet. This can be done by the planet manager. The whole fleet should be used across each individual offer (Flix IT!, Flix GO! and Flix ME!).
 
 Flix managers want to get an overview of the utilization, number of drives and amount of earned money of each planet and in total.
+
+## The tech stack
+This is goint to be a web application. I want to be as near to standards as possible (e.g. prefer Webcomponents over other component libraries) and prefer languages of the executing environment (e.g. use Javasscript for browsers).
+
+* Webcomponents (I scaffolded the project with [Open-Wc](https://open-wc.org/init/)
