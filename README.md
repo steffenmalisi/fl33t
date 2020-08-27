@@ -14,4 +14,4 @@ Flix managers want to get an overview of the utilization, number of drives and a
 ## The tech stack
 This is goint to be a web application. I want to be as near to standards as possible (e.g. prefer Webcomponents over other component libraries) and prefer languages of the executing environment (e.g. use Javasscript for browsers).
 
-* Webcomponents (I scaffolded the project with [Open-Wc](https://open-wc.org/init/)
+* Webcomponents (I scaffolded the project with [Open-Wc](https://open-wc.org/init/))

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { openWcLogo } from './open-wc-logo.js';
+import './planetr-infleet.js';
 
 export class PlanetrApp extends LitElement {
   static get properties() {
@@ -68,6 +69,8 @@ export class PlanetrApp extends LitElement {
         >
           Code examples
         </a>
+
+        <planetr-infleet></planetr-infleet>
       </main>
 
       <p class="app-footer">
