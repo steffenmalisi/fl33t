@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "test": "jest",
+    "postinstall": "serverless dynamodb install",
+    "start": "serverless offline start --migrate"
+  },
+  "devDependencies": {
+    "serverless": "^1.80.0",
+    "serverless-offline": "^6.6.0",
+    "serverless-dynamodb-local": "^0.2.39"
+  },
+  "name": "planetr-backend",
+  "version": "0.0.0",
+  "description": "Backend for the planetr application",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aws-sdk": "^2.741.0",
+    "uuid": "^8.3.0"
+  }
+}

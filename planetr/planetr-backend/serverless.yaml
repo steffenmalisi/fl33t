@@ -1,0 +1,58 @@
+service: planetr-backend
+custom:
+  dynamodb:
+    stages:
+      - ${self:provider.stage}
+  vehicleTableName: 'vehicle-${self:provider.stage}'
+  isOffline: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["AssetsDynamoDBTable", "Arn" ] }
+  environment:
+    VEHICLE_TABLE: ${self:custom.vehicleTableName}
+    IS_OFFLINE: ${self:custom.isOffline}
+functions:
+  fn-list-vehicles:
+    handler: src/list-vehicles.handler
+    events:
+      - http: GET /vehicles/
+  fn-infleet-vehicle:
+    handler: src/infleet-vehicle.handler
+    events:
+      - http: POST /vehicles/
+resources:
+  Resources:
+    AssetsDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: tid
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: tid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.vehicleTableName}
+
+
+plugins:
+    - serverless-dynamodb-local
+    - serverless-offline
