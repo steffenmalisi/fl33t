@@ -18,16 +18,14 @@ const handler = async (event) => {
 
   const body = JSON.parse(event.body);
 
-  const { id, color, seats } = body;
+  const { vin, licensePlate } = body;
 
-  const tid = uuid.v4();
+  const id = uuid.v4();
   const params = {
     TableName: VEHICLE_TABLE,
     Item: {
-      tid,
-      id,
-      color,
-      seats,
+      vin,
+      licensePlate
     },
   };
 

@@ -41,11 +41,11 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: tid
+            AttributeName: vin
             AttributeType: S
         KeySchema:
           -
-            AttributeName: tid
+            AttributeName: vin
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

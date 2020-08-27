@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import InfleetService from './infleet.service.js';
+import '@material/mwc-textfield';
+import '@material/mwc-button';
 
 const INFLEET_SUCCESS_EVENT = 'planetr-infleet-success';
 const INFLEET_FAILURE_EVENT = 'planetr-infleet-failure';
@@ -11,57 +13,41 @@ class PlanetrInfleet extends LitElement {
 
   static get styles() {
     return css`
-      form {
-        display: table;
+      mwc-textfield {
+        --mdc-theme-primary: green;
       }
-      div.row {
-        display: table-row;
-      }
-      span.cell {
-        display: table-cell;
-      }
-      label,
-      input {
-        display: table-cell;
-        margin-bottom: 10px;
-      }
-      label {
-        padding-right: 10px;
-        text-align: left;
-      }
-      input.button {
-        display: block;
-        height: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border: none;
-        float: right;
-        background-color: red;
-        color: white;
+
+      mwc-button {
+        --mdc-theme-primary: green;
       }
     `;
   }
 
   render() {
     return html`
-      <form @submit=${e => PlanetrInfleet.onSubmit(e)} action="" method="GET">
-        <div class="row">
-          <label for="id">Enter Id: </label>
-          <input type="text" name="id" id="id" required />
-        </div>
-        <div class="row">
-          <label for="color">Enter Color: </label>
-          <input type="text" name="color" id="color" required />
-        </div>
-        <div class="row">
-          <label for="seats">Enter Seats: </label>
-          <input type="text" name="seats" id="seats" required />
-        </div>
-        <div class="row">
-          <span class="cell"></span>
-          <input class="button" type="submit" value="Infleet!" />
-        </div>
-      </form>
+      <div>
+        <mwc-textfield
+          id="vin"
+          label="VIN"
+          icon="vpn_key"
+          required
+        ></mwc-textfield>
+      </div>
+      <div>
+        <mwc-textfield
+          id="lp"
+          label="License plate"
+          icon="local_police"
+          required
+        ></mwc-textfield>
+      </div>
+      <div>
+        <mwc-button
+          raised
+          label="Infleet"
+          @click=${e => this.onSubmit(e)}
+        ></mwc-button>
+      </div>
     `;
   }
 
@@ -75,12 +61,10 @@ class PlanetrInfleet extends LitElement {
     );
   }
 
-  static onSubmit(e) {
-    e.preventDefault();
-    const id = e.target[0].value;
-    const color = e.target[1].value;
-    const seats = e.target[2].value;
-    InfleetService.infleet({ id, color, seats });
+  onSubmit() {
+    const vin = this.shadowRoot.querySelector('#vin').value;
+    const licensePlate = this.shadowRoot.querySelector('#lp').value;
+    InfleetService.infleet({ vin, licensePlate });
   }
 
   static onInfleetSuccess(e) {

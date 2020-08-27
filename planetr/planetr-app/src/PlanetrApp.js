@@ -4,10 +4,7 @@ import './planetr-infleet.js';
 
 export class PlanetrApp extends LitElement {
   static get properties() {
-    return {
-      title: { type: String },
-      page: { type: String },
-    };
+    return {};
   }
 
   static get styles() {
@@ -42,15 +39,6 @@ export class PlanetrApp extends LitElement {
           transform: rotate(360deg);
         }
       }
-
-      .app-footer {
-        font-size: calc(12px + 0.5vmin);
-        align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
-      }
     `;
   }
 
@@ -58,30 +46,12 @@ export class PlanetrApp extends LitElement {
     return html`
       <main>
         <div class="logo">${openWcLogo}</div>
-        <h1>Planetr App</h1>
+        <h1>Planetr</h1>
 
-        <p>Edit <code>src/PlanetrApp.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/developing/#code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-
-        <planetr-infleet></planetr-infleet>
+        <div>
+          <planetr-infleet></planetr-infleet>
+        </div>
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
     `;
   }
 }
